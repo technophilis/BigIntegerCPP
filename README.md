@@ -39,6 +39,11 @@ Feel free to fork the project and add your own code.
 	make demo
 	./demo
 	
+### Bugs:
+
+	Please report any bugs you found in the library by email to mahmoud at devgator dot com.
+	I will appreciate it if you include the test case where the library failed.
+	
 ### Author:
 
-Mahmoud Mechehoul (http://mahmoud.devgator.com)
+Mahmoud Mechehoul(http://mahmoud.devgator.com)
