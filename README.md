@@ -46,4 +46,4 @@ Feel free to fork the project and add your own code.
 	
 ### Author:
 
-Mahmoud Mechehoul(http://mahmoud.devgator.com)
+[Mahmoud Mechehoul](http://mahmoud.devgator.com)
