@@ -88,6 +88,8 @@ public:
 	BigInteger operator+(const BigInteger& integer) const;
 
 	BigInteger operator*(const BigInteger& integer) const;
+
+	friend ostream& operator<<(ostream& in, BigInteger& integer);
 };
 
 #endif /* BIGINT_H_ */

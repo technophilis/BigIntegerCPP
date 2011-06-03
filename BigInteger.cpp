@@ -143,3 +143,9 @@ BigInteger BigInteger::operator+(const BigInteger& integer) const {
 BigInteger BigInteger::operator*(const BigInteger& integer) const {
 	return multiplyInteger(integer);
 }
+
+ostream& operator<<(ostream& in, BigInteger& integer) {
+	in << integer.toString();
+
+	return in;
+}

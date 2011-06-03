@@ -11,7 +11,7 @@ Feel free to fork the project and add your own code.
 
 ### Test:
 
-	Run the following commands
+	To test run the following commands
 
 	make tests
 	./run_tests
