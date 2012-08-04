@@ -1,6 +1,7 @@
 /*
  * BigInteger Class, performs basic arithmetic operations of very large integers.
  * Copyright (C) 2011  Mahmoud Mechehoul
+ * Copyright (C) 2012  Pankaj Kumar <me@panks.me>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
