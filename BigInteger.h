@@ -1,6 +1,7 @@
 /*
  * BigInteger Class, performs basic arithmetic operations of very large integers.
  * Copyright (C) 2011  Mahmoud Mechehoul
+ * Copyright (C) 2012  Pankaj Kumar <me@panks.me>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -76,6 +77,16 @@ public:
 	 */
 	BigInteger multiplyInteger(const string& integer_to_multiply) const;
 
+	/* Divides the internal big integer by the big integer given as an argument
+	 * and returns the result as a string.
+	 */
+	BigInteger divideInteger(const BigInteger& integer_to_divide_by) const;
+
+	/* Divides the internal big integer by the string given as an argument
+	 * and returns the result as a string.
+	 */
+	BigInteger divideInteger(const string& integer_to_divide_by) const;
+
 	/* Returns the index of the first non-zero digit in the string given as an argument.
 	 * This function is used to trim trailing zeros from a string representation of an integer.
 	 * A trimmed version of the string is a substring that starts at the index returned by this
@@ -88,6 +99,8 @@ public:
 	BigInteger operator+(const BigInteger& integer) const;
 
 	BigInteger operator*(const BigInteger& integer) const;
+
+	BigInteger operator/(const BigInteger& integer) const;
 
 	friend ostream& operator<<(ostream& in, BigInteger& integer);
 };
