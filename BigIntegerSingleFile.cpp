@@ -1,6 +1,7 @@
 /*
  * BigInteger Class, performs basic arithmetic operations of very large integers.
  * Copyright (C) 2011  Mahmoud Mechehoul
+ * Copyright (C) 2012  Pankaj Kumar <me@panks.me>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,6 +19,7 @@
 
 #include <iostream>
 #include <algorithm>
+#define MAX 10000 // for strings
 
 using namespace std;
 
@@ -40,10 +42,13 @@ public:
 	BigInteger addInteger(const string& integer_to_add) const;
 	BigInteger multiplyInteger(const BigInteger& integer_to_multiply) const;
 	BigInteger multiplyInteger(const string& integer_to_multiply) const;
+	BigInteger divideInteger(const BigInteger& integer_to_divide_by) const;
+	BigInteger divideInteger(const string& integer_to_divide_by) const;
 	static size_t getTrimIndex(const string& integer);
 	bool operator==(const BigInteger& integer) const;
 	BigInteger operator+(const BigInteger& integer) const;
 	BigInteger operator*(const BigInteger& integer) const;
+	BigInteger operator/(const BigInteger& integer) const;
 	friend ostream& operator<<(ostream& in, BigInteger& integer);
 };
 
@@ -171,6 +176,33 @@ BigInteger BigInteger::multiplyInteger(const string& integer_to_multiply) const 
 	return multiplyInteger(BigInteger(integer_to_multiply));
 }
 
+BigInteger BigInteger::divideInteger(const BigInteger& integer_to_divide_by) const{
+	long long rem = 0;
+	string result; result.resize(MAX);
+	string n=toString();
+	int den = integer_to_divide_by.getIntValue();
+
+	for(int indx=0, len = n.length(); indx<len; ++indx)
+	{
+		rem = (rem * 10) + (n[indx] - '0');
+		result[indx] = rem / den + '0';
+		rem %= den;
+	}
+	result.resize( n.length() );
+
+	while( result[0] == '0' && result.length() != 1)
+	result.erase(0,1);
+
+	if(result.length() == 0)
+	result = "0";
+
+	return BigInteger(result);
+}
+
+BigInteger BigInteger::divideInteger(const string& integer_to_divide_by) const{
+	return divideInteger(BigInteger(integer_to_divide_by));
+}
+
 size_t BigInteger::getTrimIndex(const string& integer) {
 	size_t index = 0;
 	while (integer[index] == '0' && index < integer.size() - 1) index++;
@@ -187,6 +219,10 @@ BigInteger BigInteger::operator+(const BigInteger& integer) const {
 
 BigInteger BigInteger::operator*(const BigInteger& integer) const {
 	return multiplyInteger(integer);
+}
+
+BigInteger BigInteger::operator/(const BigInteger& integer) const{
+	return divideInteger(integer);
 }
 
 ostream& operator<<(ostream& in, BigInteger& integer) {
